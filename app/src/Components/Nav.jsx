@@ -4,13 +4,15 @@ import Button from "./Button";
 
 const Navigation = styled.div`
   display: flex;
-  /* width: 1440px; */
-  /* padding: 85px 120px 31px 120px; */
+  width: 221vh;
+  padding: 150px 120px 31px 120px;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  height: 150px;
   gap: 54px;
-  background-color: #353535;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
   padding-bottom: 20px;
 `;
 const NavComp = styled.div`
@@ -31,6 +33,7 @@ const NavComp = styled.div`
 const Btn = styled.div`
   display: flex;
   gap: 20px;
+  
 `;
 
 function Nav() {

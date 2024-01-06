@@ -8,6 +8,7 @@ const Buttons = styled.button`
   align-items: flex-start;
   gap: 10px;
   border-radius: 5px;
+  height: 200;
   background: #ff4343;
 `;
 
