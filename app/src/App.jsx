@@ -1,9 +1,8 @@
 import Nav from "./Components/Nav";
 import styled from "styled-components";
-import Hero from "./Components/Hero";
 import { createGlobalStyle } from "styled-components";
 import Cards from "./Components/Cards";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GlobalStyle = createGlobalStyle`
   
@@ -21,37 +20,35 @@ body{
 const URL = "http://localhost:9000/";
 
 const App = () => {
+  const [data, setdata] = useState(null);
+  const [loader, setloader] = useState(false);
+  const [error, seterror] = useState(null);
 
-  const[data,setdata]=useState(null)
-  const [loader,setloader]=useState(false)
-  const [Error,seterror]=useState(null)
-
-    const response= async () => {
-      setloader(true)
-      try{
-        
-        const data =  await fetch(URL);
+  useEffect(() => {
+    const fetchdata = async () => {
+      setloader(true);
+      try {
+        const data = await fetch(URL);
         const res = await data.json();
-        setloader(false)
-        setdata(res)
-      }
-       catch (error){
-        seterror("Unable to fetch Data",error)
+        setloader(false);
+        setdata(res);
+      } catch (error) {
+        seterror("Unable to fetch Data");
       }
     };
-    
-    if(Error) return <div>{Error}</div>
-    if (loader) return <div>Loading...</div>
+    fetchdata();
+  }, []);
 
-    
-    
-    
+  console.log(data);
+
+  if (error) return <div>{error}</div>;
+  if (loader) return <div>Loading...</div>;
+
   return (
     <>
       <GlobalStyle />
       <Nav />
-      <Hero />
-      <Cards />
+      <Cards Data={data}/>
     </>
   );
 };
