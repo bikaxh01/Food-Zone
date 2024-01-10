@@ -17,7 +17,7 @@ body{
   background-size: cover;
 }`;
 
-const URL = "http://localhost:9000/";
+export const URL = "http://localhost:9000";
 
 const App = () => {
   const [data, setdata] = useState(null);
